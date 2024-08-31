@@ -12,11 +12,8 @@ namespace Dajjsand.Installers
         public override void InstallBindings()
         {
             Container.Bind<GameplayObjectsContainer>().FromInstance(_gameplayObjectsContainer).AsSingle().NonLazy();
-#if UNITY_MOB
-            Container.BindInterfacesAndSelfTo<MobileInputService>().AsSingle().NonLazy();
-#else
-            Container.BindInterfacesAndSelfTo<ComputerInputService>().AsSingle().NonLazy();
-#endif
+            Container.BindInterfacesTo<MobileInputService>().AsSingle().NonLazy();
+            // Container.BindInterfacesTo<ComputerInputService>().AsSingle().NonLazy();
         }
     }
 }

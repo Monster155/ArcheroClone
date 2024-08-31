@@ -14,6 +14,7 @@ namespace Dajjsand.Views.Screens
 
         public void Init(bool isVisible)
         {
+            _canvasGroup.gameObject.SetActive(isVisible);
             _canvasGroup.alpha = isVisible ? 1f : 0f;
         }
 
@@ -33,6 +34,8 @@ namespace Dajjsand.Views.Screens
 
         private IEnumerator ShowCoroutine()
         {
+            _canvasGroup.gameObject.SetActive(true);
+            
             float timer = _maxShowTime;
             while (timer > 0)
             {
@@ -47,6 +50,8 @@ namespace Dajjsand.Views.Screens
 
         private IEnumerator HideCoroutine()
         {
+            _canvasGroup.gameObject.SetActive(true);
+
             float timer = _maxHideTime;
             while (timer > 0)
             {
@@ -57,6 +62,8 @@ namespace Dajjsand.Views.Screens
             _canvasGroup.alpha = 0;
 
             _hideCoroutine = null;
+            
+            _canvasGroup.gameObject.SetActive(false);
         }
     }
 }

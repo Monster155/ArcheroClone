@@ -33,7 +33,7 @@ namespace Dajjsand.Controllers
             Player.transform.position = spawnPoint.position;
             Player.Init(gun);
             Player.Dead += Player_OnDead;
-            Player.gameObject.SetActive(false);
+            StopPlayer();
         }
 
         public void Start()
@@ -41,9 +41,14 @@ namespace Dajjsand.Controllers
             Player.gameObject.SetActive(true);
         }
 
-        private void Player_OnDead()
+        public void StopPlayer()
         {
             Player.gameObject.SetActive(false);
+        }
+
+        private void Player_OnDead()
+        {
+            StopPlayer();
             PlayerDead?.Invoke();
         }
     }

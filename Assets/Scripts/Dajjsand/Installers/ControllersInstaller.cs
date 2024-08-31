@@ -7,10 +7,10 @@ namespace Dajjsand.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<LevelProgressionController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<EnemiesController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<PlayerController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<BulletsController>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<LevelProgressionController>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<EnemiesController>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<PlayerController>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<BulletsController>().AsSingle().NonLazy();
         }
     }
 }

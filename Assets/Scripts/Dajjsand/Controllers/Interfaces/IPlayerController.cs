@@ -10,5 +10,6 @@ namespace Dajjsand.Controllers.Interfaces
         Player Player { get; }
         void Init(Transform spawnPoint);
         void Start();
+        void StopPlayer();
     }
 }

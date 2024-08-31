@@ -7,11 +7,11 @@ namespace Dajjsand.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<InputControllerFactory>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<GunFactory>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<BulletFactory>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<EnemyFactory>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<PlayerFactory>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<InputControllerFactory>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<GunFactory>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<BulletFactory>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<EnemyFactory>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<PlayerFactory>().AsSingle().NonLazy();
         }
     }
 }

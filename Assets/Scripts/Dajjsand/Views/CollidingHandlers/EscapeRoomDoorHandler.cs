@@ -7,9 +7,9 @@ namespace Dajjsand.Views.CollidingHandlers
     {
         public event Action PlayerCollide;
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.tag.Equals("Player"))
+            if (other.tag.Equals("Player"))
             {
                 PlayerCollide?.Invoke();
             }
