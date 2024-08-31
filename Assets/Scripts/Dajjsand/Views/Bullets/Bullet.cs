@@ -28,5 +28,15 @@ namespace Dajjsand.Views.Bullets
             _hitCallback?.Invoke(this);
             return _damage;
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.tag.Equals("Player")
+                && !other.tag.Equals("Enemy")
+                && !other.tag.Equals("Bullet"))
+            {
+                _hitCallback?.Invoke(this);
+            }
+        }
     }
 }

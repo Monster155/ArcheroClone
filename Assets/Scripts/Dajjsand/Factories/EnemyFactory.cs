@@ -9,7 +9,7 @@ namespace Dajjsand.Factories
     public class EnemyFactory : IEnemyFactory
     {
         private DiContainer _diContainer;
-        private Enemy _enemyPrefab;
+        private Enemy[] _enemiesPrefabs;
 
         public EnemyFactory(DiContainer diContainer)
         {
@@ -18,12 +18,14 @@ namespace Dajjsand.Factories
 
         public IEnumerator LoadResources()
         {
-            yield return _enemyPrefab = Resources.Load<Enemy>("Views/Enemies/Enemy");
+            yield return _enemiesPrefabs = Resources.LoadAll<Enemy>("Views/Enemies");
         }
 
-        public Enemy InstantiateEnemy(Transform container)
+        public Enemy InstantiateRandomEnemy(Transform container)
         {
-            Enemy enemy = _diContainer.InstantiatePrefabForComponent<Enemy>(_enemyPrefab.gameObject, container);
+            int randomIndex = Random.Range(0, _enemiesPrefabs.Length);
+            Enemy enemy = _diContainer.InstantiatePrefabForComponent<Enemy>(
+                _enemiesPrefabs[randomIndex].gameObject, container);
             return enemy;
         }
     }

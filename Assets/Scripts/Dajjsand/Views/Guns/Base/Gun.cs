@@ -3,15 +3,15 @@ using Dajjsand.Controllers.Interfaces;
 using UnityEngine;
 using Zenject;
 
-namespace Dajjsand.Views.Guns
+namespace Dajjsand.Views.Guns.Base
 {
-    public class Gun : MonoBehaviour
+    public abstract class Gun : MonoBehaviour
     {
         [field: SerializeField] public Transform Muzzle { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }
         [SerializeField] private float _reloadingTime = 3f;
 
-        private IBulletsController _bulletsController;
+        protected IBulletsController _bulletsController;
 
         private bool _canShoot = true;
 
@@ -27,9 +27,11 @@ namespace Dajjsand.Views.Guns
                 return;
 
             _canShoot = false;
-            _bulletsController.CreateBullet(Muzzle);
+            CreateBullets();
             StartCoroutine(ReloadingCoroutine());
         }
+
+        protected abstract void CreateBullets();
 
         private IEnumerator ReloadingCoroutine()
         {

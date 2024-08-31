@@ -1,6 +1,8 @@
 ﻿using System;
 using Dajjsand.Utils;
+using Dajjsand.Views.Enemies.Base;
 using Dajjsand.Views.Guns;
+using Dajjsand.Views.Guns.Base;
 using UnityEngine;
 
 namespace Dajjsand.Views.Enemies

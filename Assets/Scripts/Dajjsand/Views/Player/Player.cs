@@ -1,6 +1,7 @@
 ﻿using System;
 using Dajjsand.Services.InputServices.Interfaces;
 using Dajjsand.Views.Guns;
+using Dajjsand.Views.Guns.Base;
 using UnityEngine;
 using Zenject;
 

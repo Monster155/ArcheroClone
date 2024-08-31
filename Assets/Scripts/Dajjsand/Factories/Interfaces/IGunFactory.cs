@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Dajjsand.Views.Guns;
+using Dajjsand.Views.Guns.Base;
 using UnityEngine;
 
 namespace Dajjsand.Factories.Interfaces
@@ -7,6 +8,6 @@ namespace Dajjsand.Factories.Interfaces
     public interface IGunFactory
     {
         IEnumerator LoadResources();
-        Gun InstantiateGun(Transform container);
+        Gun InstantiateRandomGun(Transform container);
     }
 }

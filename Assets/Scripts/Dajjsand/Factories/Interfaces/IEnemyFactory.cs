@@ -7,6 +7,6 @@ namespace Dajjsand.Factories.Interfaces
     public interface IEnemyFactory
     {
         public IEnumerator LoadResources();
-        public Enemy InstantiateEnemy(Transform container);
+        public Enemy InstantiateRandomEnemy(Transform container);
     }
 }

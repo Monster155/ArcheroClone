@@ -4,6 +4,7 @@ using Dajjsand.Controllers.Interfaces;
 using Dajjsand.Factories.Interfaces;
 using Dajjsand.Views.Enemies;
 using Dajjsand.Views.Guns;
+using Dajjsand.Views.Guns.Base;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -37,9 +38,9 @@ namespace Dajjsand.Controllers
 
             foreach (Transform spawnPoint in spawnPoints)
             {
-                Gun gun = _gunFactory.InstantiateGun(null);
+                Gun gun = _gunFactory.InstantiateRandomGun(null);
 
-                Enemy enemy = _enemyFactory.InstantiateEnemy(container);
+                Enemy enemy = _enemyFactory.InstantiateRandomEnemy(container);
                 enemy.Init(_playerController.Player, gun);
                 enemy.Dead += Enemy_OnDead;
                 enemy.transform.position = spawnPoint.position;

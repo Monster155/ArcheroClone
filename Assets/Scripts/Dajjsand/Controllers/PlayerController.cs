@@ -3,6 +3,7 @@ using Dajjsand.Controllers.Interfaces;
 using Dajjsand.Factories;
 using Dajjsand.Factories.Interfaces;
 using Dajjsand.Views.Guns;
+using Dajjsand.Views.Guns.Base;
 using Dajjsand.Views.Player;
 using UnityEngine;
 using Zenject;
@@ -27,7 +28,7 @@ namespace Dajjsand.Controllers
 
         public void Init(Transform spawnPoint)
         {
-            Gun gun = _gunFactory.InstantiateGun(null);
+            Gun gun = _gunFactory.InstantiateRandomGun(null);
 
             Player = _playerFactory.InstantiatePlayer(null);
             Player.transform.position = spawnPoint.position;

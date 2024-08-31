@@ -1,5 +1,6 @@
 ﻿using System;
 using Dajjsand.Views.Guns;
+using Dajjsand.Views.Guns.Base;
 using UnityEngine;
 
 namespace Dajjsand.Views.Base
