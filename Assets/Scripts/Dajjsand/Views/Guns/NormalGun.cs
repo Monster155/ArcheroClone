@@ -7,7 +7,7 @@ namespace Dajjsand.Views.Guns
     {
         protected override void CreateBullets()
         {
-            _bulletsController.CreateBullet(Muzzle);
+            _bulletsController.CreateBullet(_bulletType, Muzzle);
         }
     }
 }

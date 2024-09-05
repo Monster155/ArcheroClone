@@ -1,5 +1,7 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Dajjsand.Factories.Interfaces;
+using Dajjsand.Utils.Types;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
 using UnityEngine;
@@ -10,7 +12,7 @@ namespace Dajjsand.Factories
     public class GunFactory : IGunFactory
     {
         private DiContainer _diContainer;
-        private Gun[] _gunsPrefabs;
+        private Dictionary<GunType, Gun> _gunsPrefabs = new Dictionary<GunType, Gun>();
 
         public GunFactory(DiContainer diContainer)
         {
@@ -19,14 +21,19 @@ namespace Dajjsand.Factories
 
         public IEnumerator LoadResources()
         {
-            yield return _gunsPrefabs = Resources.LoadAll<Gun>("Views/Guns");
+            _gunsPrefabs.Clear();
+            
+            Gun[] guns;
+            yield return guns = Resources.LoadAll<Gun>("Views/Guns");
+
+            foreach (Gun gun in guns)
+                _gunsPrefabs.Add(gun.Type, gun);
         }
 
-        public Gun InstantiateRandomGun(Transform container)
+        public Gun InstantiateGun(GunType gunType, Transform container)
         {
-            int randomIndex = Random.Range(0, _gunsPrefabs.Length);
             Gun gun = _diContainer.InstantiatePrefabForComponent<Gun>(
-                _gunsPrefabs[randomIndex].gameObject, container);
+                _gunsPrefabs[gunType].gameObject, container);
             return gun;
         }
     }

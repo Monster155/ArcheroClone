@@ -1,11 +1,11 @@
 ﻿using System;
-using Dajjsand.Views.Bullets;
+using Dajjsand.Views.Bullets.Base;
 using Dajjsand.Views.Enemies;
 using UnityEngine;
 
-namespace Dajjsand.Views.Player
+namespace Dajjsand.Views.Base
 {
-    public class PlayerHealthComponent : MonoBehaviour
+    public class BaseHealthComponent : MonoBehaviour, IDamageable
     {
         public event Action Dead;
 
@@ -34,22 +34,6 @@ namespace Dajjsand.Views.Player
                 IsDead = true;
 
                 Dead?.Invoke();
-            }
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.transform.tag.Equals("Enemy"))
-            {
-                ApplyDamage(other.transform.GetComponent<Enemy>().ContactDamage);
-            }
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.transform.tag.Equals("Bullet"))
-            {
-                ApplyDamage(other.transform.GetComponent<Bullet>().GetDamage());
             }
         }
     }

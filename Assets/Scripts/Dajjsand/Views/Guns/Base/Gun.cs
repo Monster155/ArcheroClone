@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Dajjsand.Controllers.Interfaces;
+using Dajjsand.Utils.Types;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +8,8 @@ namespace Dajjsand.Views.Guns.Base
 {
     public abstract class Gun : MonoBehaviour
     {
+        [field: SerializeField] public GunType Type { get; private set; }
+        [SerializeField] protected BulletType _bulletType;
         [field: SerializeField] public Transform Muzzle { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }
         [SerializeField] private float _reloadingTime = 3f;
@@ -23,7 +26,7 @@ namespace Dajjsand.Views.Guns.Base
 
         public void Shoot()
         {
-            if(!_canShoot)
+            if (!_canShoot)
                 return;
 
             _canShoot = false;

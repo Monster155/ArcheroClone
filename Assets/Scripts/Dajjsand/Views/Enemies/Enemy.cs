@@ -1,5 +1,6 @@
 ﻿using System;
 using Dajjsand.Utils;
+using Dajjsand.Views.Base;
 using Dajjsand.Views.Enemies.Base;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
@@ -13,7 +14,7 @@ namespace Dajjsand.Views.Enemies
 
         [SerializeField] private EnemyAttackComponent _attack;
         [SerializeField] private EnemyMovementComponent _movement;
-        [SerializeField] private EnemyHealthComponent _health;
+        [SerializeField] private BaseHealthComponent _health;
         [SerializeField] private Transform _bodyCenter;
         [SerializeField] private LayerMask _layerMask;
         [field: SerializeField] public int ContactDamage { get; private set; }

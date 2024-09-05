@@ -1,4 +1,5 @@
-﻿using Dajjsand.Views.Guns;
+﻿using Dajjsand.Utils.Types;
+using Dajjsand.Views.Guns;
 using UnityEngine;
 
 namespace Dajjsand.Controllers.Interfaces
@@ -7,6 +8,6 @@ namespace Dajjsand.Controllers.Interfaces
     {
         void Init();
         void ClearAllBullets();
-        void CreateBullet(Transform muzzle);
+        void CreateBullet(BulletType type, Transform muzzle);
     }
 }

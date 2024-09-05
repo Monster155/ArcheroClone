@@ -1,5 +1,6 @@
 ﻿using System;
 using Dajjsand.Services.InputServices.Interfaces;
+using Dajjsand.Views.Base;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Dajjsand.Views.Player
 
         [SerializeField] private PlayerMovementComponent _movement;
         [SerializeField] private PlayerAttackComponent _attack;
-        [SerializeField] private PlayerHealthComponent _health;
+        [SerializeField] private BaseHealthComponent _health;
         [SerializeField] private Transform _bodyCenter;
         [field: SerializeField] public int ContactDamage { get; set; }
 

@@ -2,7 +2,9 @@
 using Dajjsand.Controllers.Interfaces;
 using Dajjsand.Factories.Interfaces;
 using Dajjsand.Utils;
+using Dajjsand.Utils.Types;
 using Dajjsand.Views.Bullets;
+using Dajjsand.Views.Bullets.Base;
 using UnityEngine;
 using Zenject;
 
@@ -38,9 +40,10 @@ namespace Dajjsand.Controllers
             _bullets.Clear();
         }
 
-        public void CreateBullet(Transform muzzle)
+        public void CreateBullet(BulletType type, Transform muzzle)
         {
-            Bullet bullet = _bulletFactory.InstantiateBullet(_gameplayObjectsContainer.BulletsContainer);
+            Bullet bullet = _bulletFactory.InstantiateBullet(
+                type, _gameplayObjectsContainer.BulletsContainer);
             bullet.Init(muzzle, OnBulletHit);
             _bullets.Add(bullet);
         }

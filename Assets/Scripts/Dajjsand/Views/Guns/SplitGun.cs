@@ -7,12 +7,12 @@ namespace Dajjsand.Views.Guns
     {
         [SerializeField] private Transform _secondMuzzle;
         [SerializeField] private Transform _thirdMuzzle;
-        
+
         protected override void CreateBullets()
         {
-            _bulletsController.CreateBullet(Muzzle);
-            _bulletsController.CreateBullet(_secondMuzzle);
-            _bulletsController.CreateBullet(_thirdMuzzle);
+            _bulletsController.CreateBullet(_bulletType, Muzzle);
+            _bulletsController.CreateBullet(_bulletType, _secondMuzzle);
+            _bulletsController.CreateBullet(_bulletType, _thirdMuzzle);
         }
     }
 }

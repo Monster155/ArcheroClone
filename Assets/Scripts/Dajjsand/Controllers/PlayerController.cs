@@ -2,6 +2,7 @@
 using Dajjsand.Controllers.Interfaces;
 using Dajjsand.Factories;
 using Dajjsand.Factories.Interfaces;
+using Dajjsand.Utils.Types;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
 using Dajjsand.Views.Player;
@@ -13,10 +14,10 @@ namespace Dajjsand.Controllers
     public class PlayerController : IPlayerController
     {
         public event Action PlayerDead;
-        
+
         private IPlayerFactory _playerFactory;
         private IGunFactory _gunFactory;
-        
+
         public Player Player { get; private set; }
 
         [Inject]
@@ -28,7 +29,7 @@ namespace Dajjsand.Controllers
 
         public void Init(Transform spawnPoint)
         {
-            Gun gun = _gunFactory.InstantiateRandomGun(null);
+            Gun gun = _gunFactory.InstantiateGun(GunType.Pistol, null);
 
             Player = _playerFactory.InstantiatePlayer(null);
             Player.transform.position = spawnPoint.position;

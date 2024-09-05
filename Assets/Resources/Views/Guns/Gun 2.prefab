@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210b0261d2a740218710123e85238b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Type>k__BackingField: 1
   <Muzzle>k__BackingField: {fileID: 3477926583867076287}
   <AttackRange>k__BackingField: 3
   _reloadingTime: 5

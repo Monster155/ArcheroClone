@@ -1,6 +1,9 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using Dajjsand.Factories.Interfaces;
+using Dajjsand.Utils.Types;
 using Dajjsand.Views.Bullets;
+using Dajjsand.Views.Bullets.Base;
 using Dajjsand.Views.Enemies;
 using UnityEngine;
 using Zenject;
@@ -10,7 +13,7 @@ namespace Dajjsand.Factories
     public class BulletFactory : IBulletFactory
     {
         private DiContainer _diContainer;
-        private Bullet _bulletPrefab;
+        private Dictionary<BulletType, Bullet> _bulletsPrefabs = new Dictionary<BulletType, Bullet>();
 
         public BulletFactory(DiContainer diContainer)
         {
@@ -19,12 +22,19 @@ namespace Dajjsand.Factories
 
         public IEnumerator LoadResources()
         {
-            yield return _bulletPrefab = Resources.Load<Bullet>("Views/Bullets/Bullet");
+            _bulletsPrefabs.Clear();
+
+            Bullet[] bullets;
+            yield return bullets = Resources.LoadAll<Bullet>("Views/Bullets");
+
+            foreach (Bullet bullet in bullets)
+                _bulletsPrefabs.Add(bullet.Type, bullet);
         }
 
-        public Bullet InstantiateBullet(Transform container)
+        public Bullet InstantiateBullet(BulletType type, Transform container)
         {
-            var bullet = _diContainer.InstantiatePrefabForComponent<Bullet>(_bulletPrefab.gameObject, container);
+            var bullet = _diContainer.InstantiatePrefabForComponent<Bullet>(
+                _bulletsPrefabs[type].gameObject, container);
             return bullet;
         }
     }

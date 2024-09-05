@@ -128,7 +128,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1706283364953644583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9ce64df2ec41b5a5f54e858c5ad213, type: 3}
+  m_Script: {fileID: 11500000, guid: c7e27a690c8e465d9d8e94203f05366b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHP: 10
@@ -177,7 +177,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0

@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using Dajjsand.Controllers.Interfaces;
 using Dajjsand.Factories.Interfaces;
+using Dajjsand.Utils.Types;
 using Dajjsand.Views.Enemies;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Dajjsand.Controllers
 {
@@ -38,7 +40,9 @@ namespace Dajjsand.Controllers
 
             foreach (Transform spawnPoint in spawnPoints)
             {
-                Gun gun = _gunFactory.InstantiateRandomGun(null);
+                GunType[] gunTypes = (GunType[])Enum.GetValues(typeof(GunType));
+                GunType randomGun = gunTypes[Random.Range(0, gunTypes.Length)];
+                Gun gun = _gunFactory.InstantiateGun(randomGun, null);
 
                 Enemy enemy = _enemyFactory.InstantiateRandomEnemy(container);
                 enemy.Init(_playerController.Player, gun);

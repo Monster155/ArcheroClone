@@ -276,6 +276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af866bcfacfc4098b2b02639edc1da30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Type>k__BackingField: 0
+  _bulletType: 1
   <Muzzle>k__BackingField: {fileID: 3477926583867076287}
   <AttackRange>k__BackingField: 100
   _reloadingTime: 3
