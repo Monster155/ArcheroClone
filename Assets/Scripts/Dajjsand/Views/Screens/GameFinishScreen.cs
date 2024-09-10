@@ -7,6 +7,7 @@ namespace Dajjsand.Views.Screens
 {
     public class GameFinishScreen : MonoBehaviour
     {
+        [SerializeField] private SelectWeaponScreen _selectWeaponScreen;
         [SerializeField] private Button _nextButton;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _maxShowTime = 1f;
@@ -70,9 +71,6 @@ namespace Dajjsand.Views.Screens
             _canvasGroup.gameObject.SetActive(false);
         }
 
-        private void NextButton_OnClick()
-        {
-            SceneManager.LoadScene("SampleScene");
-        }
+        private void NextButton_OnClick() => _selectWeaponScreen.gameObject.SetActive(true);
     }
 }

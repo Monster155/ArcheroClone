@@ -4,6 +4,7 @@ using Dajjsand.Views.Base;
 using Dajjsand.Views.Enemies.Base;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
+using Dajjsand.Views.HealthBars;
 using UnityEngine;
 
 namespace Dajjsand.Views.Enemies
@@ -24,15 +25,15 @@ namespace Dajjsand.Views.Enemies
         public Vector3 BodyPos => _bodyCenter.position;
         public bool IsDead => _health.IsDead;
 
-        public void Init(Player.Player player, Gun gun)
+        public void Init(HealthBarsController healthBarsController, Player.Player player, Gun gun)
         {
             _target = player;
 
-            _health.Init();
+            _health.Init(healthBarsController);
             _attack.Init(gun, player, _bodyCenter);
             _movement.Init(player);
 
-            _health.Dead += Health_Dead;
+            _health.OnDead += Health_OnDead;
         }
 
         private void Update()
@@ -52,7 +53,7 @@ namespace Dajjsand.Views.Enemies
             _movement.CanMove = newBehaviorState == BehaviorState.CanMove;
         }
 
-        private void Health_Dead()
+        private void Health_OnDead()
         {
             UpdateBehaviorState(BehaviorState.NothingCanDo);
 

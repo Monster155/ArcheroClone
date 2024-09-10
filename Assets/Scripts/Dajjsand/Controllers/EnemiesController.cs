@@ -6,6 +6,7 @@ using Dajjsand.Utils.Types;
 using Dajjsand.Views.Enemies;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
+using Dajjsand.Views.HealthBars;
 using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -33,7 +34,7 @@ namespace Dajjsand.Controllers
             _gunFactory = gunFactory;
         }
 
-        public void Init(Transform[] spawnPoints, Transform container)
+        public void Init(HealthBarsController hpBarController, Transform[] spawnPoints, Transform container)
         {
             Enemies = new List<Enemy>();
             _deadEnemiesCount = 0;
@@ -45,7 +46,7 @@ namespace Dajjsand.Controllers
                 Gun gun = _gunFactory.InstantiateGun(randomGun, null);
 
                 Enemy enemy = _enemyFactory.InstantiateRandomEnemy(container);
-                enemy.Init(_playerController.Player, gun);
+                enemy.Init(hpBarController, _playerController.Player, gun);
                 enemy.Dead += Enemy_OnDead;
                 enemy.transform.position = spawnPoint.position;
                 enemy.gameObject.SetActive(false);

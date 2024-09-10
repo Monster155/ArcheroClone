@@ -23,7 +23,7 @@ namespace Dajjsand.Views.Guns.Base
         {
             _bulletsController = bulletsController;
         }
-
+        
         public void Shoot()
         {
             if (!_canShoot)

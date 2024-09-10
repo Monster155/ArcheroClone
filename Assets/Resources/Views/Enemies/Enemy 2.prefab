@@ -69,6 +69,7 @@ Transform:
   m_Children:
   - {fileID: 7972945712238422502}
   - {fileID: 1332457671385817387}
+  - {fileID: 1825456819083178647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7128986335006948805
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e27a690c8e465d9d8e94203f05366b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hpBarTarget: {fileID: 1825456819083178647}
   _maxHP: 10
 --- !u!195 &9006345394545151030
 NavMeshAgent:
@@ -142,7 +144,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -319,3 +321,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6730832091645346112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1825456819083178647}
+  m_Layer: 0
+  m_Name: HPBarTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1825456819083178647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6730832091645346112}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1881989401202265717}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

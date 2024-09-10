@@ -3,6 +3,7 @@ using Dajjsand.Services.InputServices.Interfaces;
 using Dajjsand.Views.Base;
 using Dajjsand.Views.Guns;
 using Dajjsand.Views.Guns.Base;
+using Dajjsand.Views.HealthBars;
 using UnityEngine;
 using Zenject;
 
@@ -29,13 +30,13 @@ namespace Dajjsand.Views.Player
             _inputService = inputService;
         }
 
-        public void Init(Gun gun)
+        public void Init(HealthBarsController healthBarsController, Gun gun)
         {
             _attack.Init(gun, _bodyCenter);
             _movement.Init(_inputService);
-            _health.Init();
+            _health.Init(healthBarsController);
             
-            _health.Dead += Health_Dead;
+            _health.OnDead += Health_OnDead;
         }
 
         private void Update()
@@ -47,7 +48,7 @@ namespace Dajjsand.Views.Player
             _movement.CanMove = isMoving;
         }
         
-        private void Health_Dead()
+        private void Health_OnDead()
         {
             Dead?.Invoke();
         }

@@ -1,4 +1,5 @@
 ﻿using Dajjsand.Views.CollidingHandlers;
+using Dajjsand.Views.HealthBars;
 using Dajjsand.Views.Screens;
 using UnityEngine;
 
@@ -19,5 +20,7 @@ namespace Dajjsand.Utils
         [field: SerializeField] public Transform EnemiesContainer { get; private set; }
         [field: Space]
         [field: SerializeField] public EscapeRoomDoorHandler EscapeRoomDoorHandler { get; private set; }
+        [field: Space]
+        [field: SerializeField] public HealthBarsController HealthBarsController { get; private set; }
     }
 }

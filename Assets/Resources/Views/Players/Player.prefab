@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8651634484816275677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2523597752962434254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6723056523655764400}
+  m_Layer: 0
+  m_Name: HPBarTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6723056523655764400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523597752962434254}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8651634484816275677}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4337540293197699851
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +183,7 @@ Transform:
   m_Children:
   - {fileID: 5627835386586339105}
   - {fileID: 2931055428926639658}
+  - {fileID: 6723056523655764400}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8453407183230920722
@@ -200,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gunContainer: {fileID: 611507443032728171}
   _rotatingPart: {fileID: 2931055428926639658}
+  _distanceDiffToNewTarget: 1
 --- !u!114 &8809787312764049472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e27a690c8e465d9d8e94203f05366b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hpBarTarget: {fileID: 6723056523655764400}
   _maxHP: 10
 --- !u!54 &4634227618204434909
 Rigidbody:

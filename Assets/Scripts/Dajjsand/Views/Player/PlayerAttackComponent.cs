@@ -10,6 +10,8 @@ namespace Dajjsand.Views.Player
 {
     public class PlayerAttackComponent : AutoAttackComponent
     {
+        [SerializeField] private float _distanceDiffToNewTarget = 1f;
+
         private IEnemiesController _enemiesController;
 
         [Inject]
@@ -26,9 +28,9 @@ namespace Dajjsand.Views.Player
 
             foreach (Enemy enemy in enemies)
             {
-                if(enemy.IsDead)
+                if (enemy.IsDead)
                     continue;
-                
+
                 float distance = Vector3.Distance(enemy.BodyPos, _bodyCenter.position);
                 if (distance > _gun.AttackRange)
                     continue;
@@ -51,9 +53,19 @@ namespace Dajjsand.Views.Player
                 closestEnemy = enemy;
             }
 
-            _targetBodyCenter = null;
-            if (closestEnemy != null)
+            if (closestEnemy == null)
+                _targetBodyCenter = null;
+            else if (_targetBodyCenter == null)
                 _targetBodyCenter = closestEnemy.transform;
+            else
+            {
+                float distanceToTarget = Vector3.Distance(_targetBodyCenter.position, _bodyCenter.position);
+                float distanceToClosest = Vector3.Distance(closestEnemy.BodyPos, _bodyCenter.position);
+
+                if (distanceToTarget - distanceToClosest > _distanceDiffToNewTarget)
+                    _targetBodyCenter = closestEnemy.transform;
+            }
+
             base.Attacking();
         }
     }

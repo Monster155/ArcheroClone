@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 0
-  _bulletType: 1
+  _bulletType: 0
   <Muzzle>k__BackingField: {fileID: 3477926583867076287}
   <AttackRange>k__BackingField: 100
   _reloadingTime: 3

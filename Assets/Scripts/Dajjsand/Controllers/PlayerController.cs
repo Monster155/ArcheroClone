@@ -1,10 +1,9 @@
 ﻿using System;
 using Dajjsand.Controllers.Interfaces;
-using Dajjsand.Factories;
 using Dajjsand.Factories.Interfaces;
-using Dajjsand.Utils.Types;
-using Dajjsand.Views.Guns;
+using Dajjsand.Utils;
 using Dajjsand.Views.Guns.Base;
+using Dajjsand.Views.HealthBars;
 using Dajjsand.Views.Player;
 using UnityEngine;
 using Zenject;
@@ -17,6 +16,7 @@ namespace Dajjsand.Controllers
 
         private IPlayerFactory _playerFactory;
         private IGunFactory _gunFactory;
+        private IPlayerController _playerControllerImplementation;
 
         public Player Player { get; private set; }
 
@@ -27,13 +27,13 @@ namespace Dajjsand.Controllers
             _gunFactory = gunFactory;
         }
 
-        public void Init(Transform spawnPoint)
+        public void Init(HealthBarsController hpBarController, Transform spawnPoint)
         {
-            Gun gun = _gunFactory.InstantiateGun(GunType.Pistol, null);
+            Gun gun = _gunFactory.InstantiateGun(GlobalValues.SelectedGun, null);
 
             Player = _playerFactory.InstantiatePlayer(null);
             Player.transform.position = spawnPoint.position;
-            Player.Init(gun);
+            Player.Init(hpBarController, gun);
             Player.Dead += Player_OnDead;
             StopPlayer();
         }

@@ -71,9 +71,15 @@ namespace Dajjsand.Activators
             yield return _playerFactory.LoadResources();
 
             _inputService.Init();
+            _gameplayObjectsContainer.HealthBarsController.Init();
 
-            _playerController.Init(_gameplayObjectsContainer.PlayerSpawnPoint);
-            _enemiesController.Init(_gameplayObjectsContainer.EnemiesSpawnPoints, _gameplayObjectsContainer.EnemiesContainer);
+            _playerController.Init(
+                _gameplayObjectsContainer.HealthBarsController,
+                _gameplayObjectsContainer.PlayerSpawnPoint);
+            _enemiesController.Init(
+                _gameplayObjectsContainer.HealthBarsController,
+                _gameplayObjectsContainer.EnemiesSpawnPoints,
+                _gameplayObjectsContainer.EnemiesContainer);
             _bulletsController.Init();
             
             _levelProgressionController.Init();

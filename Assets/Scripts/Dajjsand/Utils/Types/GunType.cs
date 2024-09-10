@@ -4,5 +4,6 @@
     {
         Pistol,
         Shotgun,
+        RicochetPistol,
     }
 }
