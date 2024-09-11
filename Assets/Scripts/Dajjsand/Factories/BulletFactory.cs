@@ -19,7 +19,7 @@ namespace Dajjsand.Factories
         private GameplayObjectsContainer _gameplayObjectsContainer;
 
         private Bullet _bulletPrefab;
-        private ObjectPool<Bullet> _bulletsPool;
+        private Dictionary<int, ObjectPool<Bullet>> _masterPool = new();
 
         public BulletFactory(DiContainer diContainer, GameplayObjectsContainer gameplayObjectsContainer)
         {
@@ -30,20 +30,40 @@ namespace Dajjsand.Factories
         public IEnumerator LoadResources()
         {
             yield return _bulletPrefab = Resources.Load<Bullet>("Views/Bullets/Bullet");
-
-            _bulletsPool = new(
-                () => _diContainer.InstantiatePrefabForComponent<Bullet>(
-                    _bulletPrefab.gameObject, _gameplayObjectsContainer.BulletsContainer),
-                bullet => bullet.gameObject.SetActive(true),
-                bullet => bullet.gameObject.SetActive(false),
-                bullet => Object.Destroy(bullet.gameObject));
         }
 
         public Bullet InstantiateBullet(BulletEffectType[] bulletEffectTypes)
         {
-            var bullet = _bulletsPool.Get();
-            bullet.SetStrategies(StrategiesResolver(bulletEffectTypes));
+            int hash = EffectsToHash(bulletEffectTypes);
+            bool isPoolAvailable = _masterPool.TryGetValue(hash, out var pool);
+            if (!isPoolAvailable)
+            {
+                pool = new(
+                    () =>
+                    {
+                        var b = _diContainer.InstantiatePrefabForComponent<Bullet>(
+                            _bulletPrefab.gameObject, _gameplayObjectsContainer.BulletsContainer);
+                        b.SetStrategies(StrategiesResolver(bulletEffectTypes));
+                        return b;
+                    },
+                    bullet => bullet.gameObject.SetActive(true),
+                    bullet => bullet.gameObject.SetActive(false),
+                    bullet => Object.Destroy(bullet.gameObject));
+
+                _masterPool.Add(hash, pool);
+            }
+
+            var bullet = pool.Get();
             return bullet;
+        }
+
+        private int EffectsToHash(BulletEffectType[] bulletEffectTypes)
+        {
+            int hash = 0;
+            foreach (int effect in bulletEffectTypes)
+                hash = hash | 1 << effect;
+
+            return hash;
         }
 
         private IBulletStrategy[] StrategiesResolver(BulletEffectType[] bulletEffectTypes)
