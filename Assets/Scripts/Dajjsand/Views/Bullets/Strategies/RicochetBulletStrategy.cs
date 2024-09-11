@@ -7,39 +7,30 @@ namespace Dajjsand.Views.Bullets.Strategies
     public class RicochetBulletStrategy : IBulletStrategy
     {
         private const int MaxRicochetsCount = 3;
-
-        private Transform _selfTransform;
-        private float _speed;
-        private int _damage;
-
         private int _ricochetCounter;
 
-        public void Init(Transform selfTransform, float speed, int damage)
-        {
-            _selfTransform = selfTransform;
-            _speed = speed;
-            _damage = damage;
+        private bool _isChangesApplied = true;
+        private Vector3 _normal;
 
-            _ricochetCounter = 0;
-        }
-
-        public void Move()
+        public void UpdateMovement(Transform selfTransform)
         {
-            _selfTransform.position += _selfTransform.forward * _speed;
+            if (_isChangesApplied)
+                return;
+
+            Vector3 reflectedVector = Vector3.Reflect(selfTransform.forward, _normal);
+            selfTransform.forward = reflectedVector;
+            
+            _isChangesApplied = true;
         }
 
         public bool OnHit(Collision other)
         {
             IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
             if (damageable != null) // Player and Enemies
-            {
-                damageable.ApplyDamage(_damage);
                 return true;
-            }
 
-            Vector3 normal = other.contacts[0].normal;
-            Vector3 reflectedVector = Vector3.Reflect(_selfTransform.forward, normal);
-            _selfTransform.forward = reflectedVector;
+            _normal = other.contacts[0].normal;
+            _isChangesApplied = false;
 
             _ricochetCounter++;
             return _ricochetCounter > MaxRicochetsCount;

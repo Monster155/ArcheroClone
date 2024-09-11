@@ -8,6 +8,6 @@ namespace Dajjsand.Controllers.Interfaces
     {
         void Init();
         void ClearAllBullets();
-        void CreateBullet(BulletType type, Transform muzzle);
+        void CreateBullet(BulletEffectType[] bulletEffectTypes, Transform muzzle);
     }
 }

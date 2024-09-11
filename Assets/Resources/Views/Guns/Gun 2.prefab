@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Type>k__BackingField: 1
-  _bulletType: 1
+  _bulletEffectTypes: 02000000
   <Muzzle>k__BackingField: {fileID: 3477926583867076287}
   <AttackRange>k__BackingField: 3
   _reloadingTime: 5

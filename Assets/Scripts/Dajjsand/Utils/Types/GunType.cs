@@ -5,5 +5,6 @@
         Pistol,
         Shotgun,
         RicochetPistol,
+        Rifle,
     }
 }

@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4182218478168515168}
-  - component: {fileID: 130710664758958166}
+  - component: {fileID: 3417432797379792863}
   m_Layer: 0
   m_Name: Gun 3
   m_TagString: Untagged
@@ -348,7 +348,7 @@ Transform:
   - {fileID: 3477926583867076287}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &130710664758958166
+--- !u!114 &3417432797379792863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,13 +357,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8431431666269894463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 210b0261d2a740218710123e85238b94, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dd1c6c3cba24fdb8578f2a85cc95aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Type>k__BackingField: 1
-  _bulletType: 1
+  <Type>k__BackingField: 3
+  _bulletEffectTypes: 00000000
   <Muzzle>k__BackingField: {fileID: 3477926583867076287}
-  <AttackRange>k__BackingField: 3
-  _reloadingTime: 5
-  _secondMuzzle: {fileID: 0}
-  _thirdMuzzle: {fileID: 0}
+  <AttackRange>k__BackingField: 5
+  _reloadingTime: 6
+  _magazineSize: 30
+  _bulletsCountInRow: 5
+  _rowReloading: 1.5
+  _bulletsInRowReloading: 0.1

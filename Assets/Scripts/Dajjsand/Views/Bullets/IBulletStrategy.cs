@@ -4,8 +4,7 @@ namespace Dajjsand.Views.Bullets
 {
     public interface IBulletStrategy
     {
-        void Init(Transform selfTransform, float speed, int damage);
-        void Move();
+        void UpdateMovement(Transform selfTransform);
         bool OnHit(Collision other);
     }
 }

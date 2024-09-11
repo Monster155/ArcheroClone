@@ -8,6 +8,6 @@ namespace Dajjsand.Factories.Interfaces
     public interface IBulletFactory
     {
         IEnumerator LoadResources();
-        Bullet InstantiateBullet(BulletType type, Transform container);
+        Bullet InstantiateBullet(BulletEffectType[] bulletEffectTypes);
     }
 }

@@ -32,8 +32,6 @@ namespace Dajjsand.Views.Player
                     continue;
 
                 float distance = Vector3.Distance(enemy.BodyPos, _bodyCenter.position);
-                if (distance > _gun.AttackRange)
-                    continue;
 
                 if (closestEnemy != null && distance > closestDistance)
                     continue;

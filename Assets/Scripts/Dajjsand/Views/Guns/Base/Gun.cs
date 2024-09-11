@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Dajjsand.Controllers.Interfaces;
 using Dajjsand.Utils.Types;
 using UnityEngine;
@@ -9,38 +10,45 @@ namespace Dajjsand.Views.Guns.Base
     public abstract class Gun : MonoBehaviour
     {
         [field: SerializeField] public GunType Type { get; private set; }
-        [SerializeField] protected BulletType _bulletType;
+        [SerializeField] protected BulletEffectType[] _bulletEffectTypes;
         [field: SerializeField] public Transform Muzzle { get; private set; }
         [field: SerializeField] public float AttackRange { get; private set; }
-        [SerializeField] private float _reloadingTime = 3f;
+        [SerializeField] protected float _reloadingTime = 3f;
 
         protected IBulletsController _bulletsController;
 
-        private bool _canShoot = true;
+        protected bool _canShoot = true;
 
         [Inject]
         private void Construct(IBulletsController bulletsController)
         {
             _bulletsController = bulletsController;
         }
-        
+
         public void Shoot()
         {
             if (!_canShoot)
                 return;
 
-            _canShoot = false;
             CreateBullets();
-            StartCoroutine(ReloadingCoroutine());
         }
 
         protected abstract void CreateBullets();
 
-        private IEnumerator ReloadingCoroutine()
+        protected void StartReloading(float timer, Action reloadedCallback)
         {
-            yield return new WaitForSeconds(_reloadingTime);
+            _canShoot = false;
+
+            StartCoroutine(ReloadingCoroutine(timer, reloadedCallback));
+        }
+
+        protected IEnumerator ReloadingCoroutine(float timer, Action reloadedCallback)
+        {
+            yield return new WaitForSeconds(timer);
 
             _canShoot = true;
+
+            reloadedCallback?.Invoke();
         }
     }
 }

@@ -42,10 +42,9 @@ namespace Dajjsand.Controllers
             _bullets.Clear();
         }
 
-        public void CreateBullet(BulletType type, Transform muzzle)
+        public void CreateBullet(BulletEffectType[] bulletEffectTypes, Transform muzzle)
         {
-            Bullet bullet = _bulletFactory.InstantiateBullet(
-                type, _gameplayObjectsContainer.BulletsContainer);
+            Bullet bullet = _bulletFactory.InstantiateBullet(bulletEffectTypes);
             bullet.Init(muzzle, OnBulletHit);
             _bullets.Add(bullet);
         }

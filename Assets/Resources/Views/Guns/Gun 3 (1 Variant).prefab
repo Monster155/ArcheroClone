@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: <Type>k__BackingField
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3580530982300108331, guid: 2c1799781912b034f864595af3e903ac, type: 3}
+      propertyPath: _bulletEffectTypes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580530982300108331, guid: 2c1799781912b034f864595af3e903ac, type: 3}
+      propertyPath: _bulletEffectTypes.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4182218478168515168, guid: 2c1799781912b034f864595af3e903ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

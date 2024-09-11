@@ -10,9 +10,11 @@ namespace Dajjsand.Views.Guns
 
         protected override void CreateBullets()
         {
-            _bulletsController.CreateBullet(_bulletType, Muzzle);
-            _bulletsController.CreateBullet(_bulletType, _secondMuzzle);
-            _bulletsController.CreateBullet(_bulletType, _thirdMuzzle);
+            _bulletsController.CreateBullet(_bulletEffectTypes, Muzzle);
+            _bulletsController.CreateBullet(_bulletEffectTypes, _secondMuzzle);
+            _bulletsController.CreateBullet(_bulletEffectTypes, _thirdMuzzle);
+            
+            StartReloading(_reloadingTime, null);
         }
     }
 }

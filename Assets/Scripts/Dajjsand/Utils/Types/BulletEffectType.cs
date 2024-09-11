@@ -1,8 +1,9 @@
 ﻿namespace Dajjsand.Utils.Types
 {
-    public enum BulletType
+    public enum BulletEffectType
     {
-        Default,
+        Instant,
         Ricochet3,
+        Poison,
     }
 }
